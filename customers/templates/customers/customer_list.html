@@ -1,0 +1,9 @@
+
+{% block content %}
+    <h2>Customers ({{ object_list.count }})</h2>
+    <ul>
+        {% for customer in object_list %}
+            <li>{{ customer.company_name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

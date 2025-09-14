@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.core.validators import RegexValidator
+from django.urls import reverse
 
 
 class Customer(models.Model):
@@ -40,3 +41,6 @@ class Customer(models.Model):
     
     def __str__(self):
         return f"{self.company_name} ({self.cnpj})"
+    
+    def get_absolute_url(self):
+        return reverse('customer_detail', args=[self.id])
