@@ -1,15 +1,39 @@
 
+
+{% extends "customers/base.html" %}
+
+{% block title %}Customers | Fabrica Console{% endblock %}
+
 {% block content %}
-    <h2>Customers ({{ object_list.count }})</h2>
-    <a href="{% url 'customer_add' %}">Add New Customer</a>
-    <ul>
-        {% for customer in object_list %}
-            <li>
-                {{ customer.company_name }}
-                <a href="{% url 'customer_detail' customer.pk %}">Details</a>
-                <a href="{% url 'customer_edit' customer.pk %}">Edit</a>
-                <a href="{% url 'customer_delete' customer.pk %}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Customers <span class="badge bg-primary">{{ object_list.count }}</span></h2>
+    <a href="{% url 'customer_add' %}" class="btn btn-success">Add New Customer</a>
+</div>
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Company Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in object_list %}
+                <tr>
+                    <td>{{ customer.company_name }}</td>
+                    <td>
+                        <a href="{% url 'customer_detail' customer.pk %}" class="btn btn-sm btn-info">Details</a>
+                        <a href="{% url 'customer_edit' customer.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'customer_delete' customer.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="2" class="text-center">No customers found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
+

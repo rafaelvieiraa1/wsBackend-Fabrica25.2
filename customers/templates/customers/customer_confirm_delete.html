@@ -1,7 +1,20 @@
-<h2>Confirm Delete Customer</h2>
-<p>Are you sure you want to delete the customer "{{ object.company_name }}"?</p>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Confirm</button>
-</form>
+{% extends "customers/base.html" %}
+
+{% block title %}Delete Customer | Fabrica Console{% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+    <div class="card-header bg-danger text-white">
+        <h3 class="mb-0">Confirm Delete Customer</h3>
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete the customer <strong>{{ object.company_name }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-danger">Confirm</button>
+            <a href="{% url 'customer_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

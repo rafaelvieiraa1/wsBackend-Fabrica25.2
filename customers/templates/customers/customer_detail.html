@@ -1,7 +1,30 @@
-<h2>Customer Details</h2>
-<p><strong>CNPJ:</strong> {{ object.cnpj }}</p>
-<p><strong>Company Name:</strong> {{ object.company_name }}</p>
-<p><strong>Phone:</strong> {{ object.phone }}</p>
-<p><strong>Email:</strong> {{ object.email }}</p>
-<p><strong>Created At:</strong> {{ object.created_at }}</p>
-<p><strong>Updated At:</strong> {{ object.updated_at }}</p>
+{% extends "customers/base.html" %}
+
+{% block title %}Customer Details | Fabrica Console{% endblock %}
+
+{% block content %}
+<div class="card">
+	<div class="card-header bg-primary text-white">
+		<h3 class="mb-0">Customer Details</h3>
+	</div>
+	<div class="card-body">
+		<dl class="row">
+			<dt class="col-sm-3">CNPJ</dt>
+			<dd class="col-sm-9">{{ object.cnpj }}</dd>
+			<dt class="col-sm-3">Company Name</dt>
+			<dd class="col-sm-9">{{ object.company_name }}</dd>
+			<dt class="col-sm-3">Phone</dt>
+			<dd class="col-sm-9">{{ object.phone }}</dd>
+			<dt class="col-sm-3">Email</dt>
+			<dd class="col-sm-9">{{ object.email }}</dd>
+			<dt class="col-sm-3">Created At</dt>
+			<dd class="col-sm-9">{{ object.created_at }}</dd>
+			<dt class="col-sm-3">Updated At</dt>
+			<dd class="col-sm-9">{{ object.updated_at }}</dd>
+		</dl>
+		<a href="{% url 'customer_edit' object.pk %}" class="btn btn-warning">Edit</a>
+		<a href="{% url 'customer_delete' object.pk %}" class="btn btn-danger">Delete</a>
+		<a href="{% url 'customer_list' %}" class="btn btn-secondary">Back to List</a>
+	</div>
+</div>
+{% endblock %}
