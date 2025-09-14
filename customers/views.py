@@ -1,7 +1,8 @@
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from customers.models import Customer
 from django.urls import reverse_lazy
+from customers.models import Customer
 from customers.forms import CustomerForm
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+
 
 
 class CustomerListView(ListView):

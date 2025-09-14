@@ -1,8 +1,10 @@
-from django import forms
-from customers.models import Customer
-import requests
 import re
+import requests
+from django import forms
 from django.conf import settings
+from customers.models import Customer
+
+
 
 class CNPJClient:
     API_URL = settings.CNPJ_API_URL
